@@ -85,8 +85,9 @@ class Griode(object):
     def tick(self, tick):
         pass
 
+
     def detect_devices(self, initial=True):
-        from launchpad import LaunchpadMK2, LaunchpadPro, LaunchpadS, LaunchpadX
+        from launchpad import LaunchpadMK2, LaunchpadPro, LaunchpadS, LaunchpadX, LaunchpadMiniMK3
         from keyboard import Keyboard
         logging.debug("Enumerating MIDI ports...")
         configured_ports = { grid.grid_name for grid in self.grids }
@@ -96,6 +97,7 @@ class Griode(object):
             logging.exception("Error while enumerating MIDI ports")
             detected_ports = set()
         for port_name in detected_ports - configured_ports:
+            logging.debug("Got X port_name '{}'".format(port_name))
             # Detected a new device! Yay!
             klass = None
             if "Launchpad Pro MIDI 2" in port_name:
@@ -105,8 +107,9 @@ class Griode(object):
             if "Launchpad S" in port_name:
                 klass = LaunchpadS
             if "Launchpad X" in port_name:
-                logging.debug("Got X port_name '{}'".format(port_name))
                 klass = LaunchpadX
+            if "Launchpad Mini MK3" in port_name:
+                klass = LaunchpadMiniMK3
             if "Launchpad Mini" in port_name:
                 klass = LaunchpadS
             if "reface" in port_name:
@@ -124,8 +127,7 @@ class Griode(object):
 
         for port_name in configured_ports - detected_ports:
             # Removing a device
-            logging.info("Device {} is no longer plugged. Removing it."
-                         .format(port_name))
+            logging.info("Device {} is no longer plugged. Removing it.".format(port_name))
             self.grids = [g for g in self.grids if g.grid_name != port_name]
 
 ##############################################################################

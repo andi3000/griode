@@ -116,6 +116,7 @@ class LaunchpadPro(LaunchPad):
         mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]),
     ]
 
+
 class LaunchpadX(LaunchPad):
     logging.debug("Launchpad X")
 
@@ -161,6 +162,34 @@ class LaunchpadMK2(LaunchPad):
     setup = []
 
 
+class LaunchpadMiniMK3(LaunchPad):
+
+    palette = "RGB"
+    message2led = {}
+    led2message = {}
+
+    for row in range(1, 9):
+        for column in range(1, 9):
+            note = 10*row + column  # 11-18; 21-28; 31-38 ... 81-88
+            message2led["NOTE", note] = row, column
+            led2message[row, column] = "NOTE", note
+    for i, button in enumerate(ARROWS + MENU):
+        control = 91 + i
+        message2led["CC", control] = button
+        led2message[button] = "CC", control
+
+    setup = [
+        ## This SysEx message switches the LaunchPad Pro to "programmer" mode
+        #mido.Message("sysex", data=[0, 32, 41, 2, 16, 44, 3]), #Launchpad Pro
+        #mido.Message("sysex", data=[0, 32, 41, 2, 12, 14, 1]),  #Launchpad X
+        mido.Message("sysex", data=[0, 32, 41, 2, 13, 14, 1]),
+        ## And this one sets the front/side LED
+        #mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]), #Launchpad Pro
+        #mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]), #Launchpad X
+        mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]),
+    ]
+
+
 class LaunchpadS(LaunchPad):
 
     palette = "RG"
@@ -169,7 +198,7 @@ class LaunchpadS(LaunchPad):
 
     for row in range(1, 9):
         for column in range(1, 9):
-            note = 16*(8-row) + column-1
+            note = 16*(8-row) + column-1 # 0-7; 16-23; 32-39 ... 112-119
             message2led["NOTE", note] = row, column
             led2message[row, column] = "NOTE", note
     for i, button in enumerate(ARROWS + MENU):
