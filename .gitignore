@@ -1,4 +1,3 @@
-.gitignore
 __pycache__
 *.swp
 *.sf2
@@ -11,4 +10,4 @@ __pycache__
 .griode.pid
 *.lock
 lv2.json
-
+.idea
