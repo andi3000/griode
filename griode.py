@@ -122,7 +122,6 @@ class Griode(object):
 
                 logging.debug("klass: {}".format(klass))
                 self.grids.append(klass(self, port_name))
-                logging.info("Here");
 
         for port_name in configured_ports - detected_ports:
             # Removing a device

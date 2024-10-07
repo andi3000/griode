@@ -95,7 +95,6 @@ class Menu(Gridget):
         self.draw()
 
     def draw(self):
-        logging.debug("Here")
         for button in self.menu:
             if button == self.current:
                 self.surface[button] = palette.MENU[1]

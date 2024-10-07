@@ -27,8 +27,7 @@ class Instrument(object):
         self.is_drumkit = None  # True for drumkits, False for others
         self.font_index = None  # this is a UI value; starts at 0
         self.bank_index = None  # this is a UI value; starts at 0
-        logging.info("Instrument: font {} programme: {} bank {} name {}"
-                     .format(font, program  , bank, name))
+        logging.info("Instrument: font {} programme: {} bank {} name {}".format(font, program  , bank, name))
     def messages(self):
         """Generate MIDI messages to switch to that instrument."""
         return [
@@ -38,8 +37,7 @@ class Instrument(object):
         ]
 
     def __repr__(self):
-        return ("Instrument({0.font}, {0.program}, {0.bank}, {0.name})"
-                .format(self))
+        return ("Instrument({0.font}, {0.program}, {0.bank}, {0.name})".format(self))
 
 class Fluidsynth(object):
 
@@ -134,8 +132,7 @@ class Fluidsynth(object):
             if len(port_names) > 1:
                 logging.warning("Found more than one port for griode")
             self.synth_port = mido.open_output(port_names[0])
-            logging.info("Connected to MIDI output {}"
-                         .format(port_names[0]))
+            logging.info("Connected to MIDI output {}".format(port_names[0]))
             break
         else:
             logging.error("Failed to locate the fluidsynth port!")

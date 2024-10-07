@@ -20,15 +20,11 @@ class LaunchPad(Grid):
 
     def process_message(self, message):
         logging.debug("got message {}".format(message))
-        logging.info("Here");
 
         # OK this is a hack to use fluidsynth directly with the Launchpad Pro
         if getattr(message, "channel", None) == 8:
             self.griode.synth.send(message)
-            logging.info("Here");
             return
-
-        logging.info("Here");
 
         # Ignore aftertouch messages for now
         if message.type == "polytouch":
@@ -61,7 +57,6 @@ class LaunchPad(Grid):
             # (i.e. not when it is released, which corresponds to value=0)
             if message.value == 127:
                 gridget.button_pressed(led)
-        logging.info("Here");
 
     def tick(self, tick):
         # This is a hack to work around a bug on the Raspberry Pi.
@@ -184,7 +179,7 @@ class LaunchpadMiniMK3(LaunchPad):
         ## This SysEx message switches the LaunchPad Pro to "programmer" mode
         #mido.Message("sysex", data=[0, 32, 41, 2, 16, 44, 3]), #Launchpad Pro
         #mido.Message("sysex", data=[0, 32, 41, 2, 12, 14, 1]),  #Launchpad X
-        mido.Message("sysex", data=[0, 32, 41, 2, 13, 14, 1]),
+        mido.Message("sysex", data=[240, 0, 32, 41, 2, 13, 14, 1, 247]),
         ## And this one sets the front/side LED
         #mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]), #Launchpad Pro
         #mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]), #Launchpad X
