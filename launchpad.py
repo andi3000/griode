@@ -177,13 +177,12 @@ class LaunchpadMiniMK3(LaunchPad):
 
     setup = [
         ## This SysEx message switches the LaunchPad Pro to "programmer" mode
-        #mido.Message("sysex", data=[0, 32, 41, 2, 16, 44, 3]), #Launchpad Pro
-        #mido.Message("sysex", data=[0, 32, 41, 2, 12, 14, 1]),  #Launchpad X
-        mido.Message("sysex", data=[240, 0, 32, 41, 2, 13, 14, 1, 247]),
+        #mido.Message("sysex", data=[0, 32, 41, 2, 13, 14, 1]),
+        mido.Message("sysex", data=[0, 32, 41, 2, 13, 14, 1]),
+
         ## And this one sets the front/side LED
-        #mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]), #Launchpad Pro
-        #mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]), #Launchpad X
-        mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]),
+        #mido.Message("sysex", data=[0, 32, 41, 2, 16, 10, 99, 0]), # X, Pro
+        mido.Message("sysex", data=[0, 32, 41, 2, 13, 10, 0, 1]),
     ]
 
 
