@@ -12,6 +12,6 @@ WantedBy=multi-user.target
 WorkingDirectory=/home/andi/griode
 ExecStart=/home/andi/griode/griode.py
 User=andi
-Group=andi
+Group=audio
 Restart=always
 KillSignal=SIGINT
