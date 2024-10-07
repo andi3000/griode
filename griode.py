@@ -110,7 +110,7 @@ class Griode(object):
                 klass = LaunchpadX
             if "Launchpad Mini MK3" in port_name:
                 klass = LaunchpadMiniMK3
-            if "Launchpad Mini" in port_name:
+            elif "Launchpad Mini" in port_name:
                 klass = LaunchpadS
             if "reface" in port_name:
                 klass = Keyboard
@@ -120,7 +120,6 @@ class Griode(object):
                     logging.info("Detected hotplug of new device: {}".format(port_name))
                     time.sleep(4)
 
-                logging.info("Here");
                 logging.debug("klass: {}".format(klass))
                 self.grids.append(klass(self, port_name))
                 logging.info("Here");

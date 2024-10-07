@@ -94,7 +94,7 @@ class LPSurface(object):
 
 
 class LaunchpadPro(LaunchPad):
-    logging.debug("...")
+    #logging.debug("Launchpad Pro")
 
     palette = "RGB"
     message2led = {}
@@ -118,7 +118,7 @@ class LaunchpadPro(LaunchPad):
 
 
 class LaunchpadX(LaunchPad):
-    logging.debug("Launchpad X")
+    #logging.debug("Launchpad X")
 
     palette = "RGB"
     message2led = {}
@@ -144,6 +144,7 @@ class LaunchpadX(LaunchPad):
 
 
 class LaunchpadMK2(LaunchPad):
+    #logging.debug("Launchpad MK2")
 
     palette = "RGB"
     message2led = {}
@@ -163,6 +164,7 @@ class LaunchpadMK2(LaunchPad):
 
 
 class LaunchpadMiniMK3(LaunchPad):
+    #logging.debug("Launchpad Mini MK3")
 
     palette = "RGB"
     message2led = {}
@@ -191,6 +193,7 @@ class LaunchpadMiniMK3(LaunchPad):
 
 
 class LaunchpadS(LaunchPad):
+    #logging.debug("Launchpad S")
 
     palette = "RG"
     message2led = {}
