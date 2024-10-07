@@ -14,4 +14,4 @@ ExecStart=/home/andi/griode/griode.py
 User=andi
 Group=andi
 Restart=always
-
+KillSignal=SIGINT

@@ -39,8 +39,7 @@ logging.debug("User: {}".format(getpass.getuser()))
 def handler(signum, frame):
     global scale
     scale=scales.MAJOR
-    logging.debug("signum {} frame  {} scale {}".
-                  format(signum, frame, scale))
+    logging.debug("signum {} frame  {} scale {}".format(signum, frame, scale))
 
 signal.signal(signal.SIGUSR2, handler)
     
